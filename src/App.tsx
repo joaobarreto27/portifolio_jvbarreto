@@ -75,16 +75,16 @@ function App() {
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#projects">
-              Ver projetos <ArrowRight size={18} />
+              Ver Projetos <ArrowRight size={15} />
             </a>
             <a className="button button-secondary" href="#about">
-              Sobre Mim <User size={18} />
+              Sobre Mim <User size={15} />
             </a>
             <a className="button button-secondary" href={linkedInUrl} target="_blank" rel="noreferrer">
-              Linkedin <Linkedin size={18} />
+              Linkedin <Linkedin size={15} />
             </a>
             <a className="button button-secondary" href="#contact">
-              Fale comigo <Send size={18} />
+              Fale comigo <Send size={15} />
             </a>
           </div>
         </div>
