@@ -129,7 +129,7 @@ function App() {
 
       <section id="skills" className="section section-dark">
         <div className="section-inner">
-          <h2>Ferramentas e conhecimentos</h2>
+          <h2>Habilidades Técnicas</h2>
           <p className="section-copy">
             Tecnologias e práticas que uso para entregar projetos de dados confiáveis
             e de alto impacto.
