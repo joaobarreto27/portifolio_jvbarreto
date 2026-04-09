@@ -289,15 +289,21 @@ a {
 .feature-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 1rem;
   min-height: 260px;
+}
+
+.feature-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .feature-card h3,
 .skill-card h3,
 .project-card h3 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
 .feature-card p,
@@ -312,7 +318,6 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 1.5rem;
 }
 
 .feature-card svg,

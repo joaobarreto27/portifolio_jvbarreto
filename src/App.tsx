@@ -1,4 +1,5 @@
 import { Send, Cloud, Database, Settings, Sparkles, ArrowRight, Github, Linkedin, MapPin } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 
 const linkedInUrl = 'https://www.linkedin.com/in/jo%C3%A3o-vitor-barreto-495a6a222/';
 const githubUrl = 'https://github.com/joaobarreto27';
@@ -9,32 +10,22 @@ const toolCards = [
   {
     icon: <Cloud size={24} />,
     title: 'Cloud AWS',
-    description: 'EC2, VPC, S3, Secrets Manager e deploys automatizados com CI/CD.',
     tools: ['S3', 'VPC', 'EC2', 'RDS', 'Lambda', 'EventBridge', 'Secrets Manager'],
   },
   {
     icon: <Database size={24} />,
     title: 'Data Engineering',
-    description: 'ETL/ELT, modelagem dimensional e pipelines confiáveis.',
     tools: ['PySpark', 'Python', 'SQL', 'Pandas', 'Data Lake', 'ETL'],
   },
   {
     icon: <Sparkles size={24} />,
     title: 'Airflow & Docker',
-    description: 'Orquestração de pipeline com Apache Airflow e ambientes com Docker.',
     tools: ['Apache Airflow', 'Docker', 'CI/CD'],
   },
   {
     icon: <Settings size={24} />,
-    title: 'Observabilidade',
-    description: 'Monitoramento, custos e governança de dados para operações seguras.',
-    tools: ['Logs', 'Alertas', 'Auditoria'],
-  },
-  {
-    icon: <Settings size={24} />,
-    title: 'Data Quality',
-    description: 'Validação, testes e governança de dados para garantir confiabilidade.',
-    tools: ['Pydantic', 'Pandera'],
+    title: 'Observabilidade e DataQuality',
+    tools: ['Logs', 'Alertas', 'Auditoria', 'Monitoramento', 'Pydantic', 'Pandera'],
   },
 ];
 
@@ -55,13 +46,13 @@ const education = [
 
 const projects = [
   {
-    title: 'Lakehouse Orquestrado com PySpark e Apache Airflow',
+    title: 'Lakehouse Orquestrado com PySpark, Apache Airflow e AWS',
     description: 'Arquitetura de dados moderna com Delta Lake, PySpark e observabilidade completa para analytics.',
     highlights: ['PySpark', 'Apache Airflow', 'Data Lake', 'AWS'],
     repoUrl: 'https://github.com/joaobarreto27/market-data-lakehouse-orchestrator'
   },
   {
-    title: 'ETL Bitcoin com Airflow e Pandas',
+    title: 'ETL com Pandas e Apache Airflow para Dados de Criptomoedas',
     description: 'Pipeline de dados automatizado para coleta e processamento de dados de criptomoedas usando Apache Airflow, Docker e AWS.',
     highlights: ['Apache Airflow', 'Docker', 'Pandas', 'ETL'],
     repoUrl: 'https://github.com/joaobarreto27/etl-bitcoin-jd'
@@ -146,10 +137,9 @@ function App() {
           <div className="feature-grid">
             {toolCards.map((tool) => (
               <article key={tool.title} className="feature-card card-hover">
-                <div>
+                <div className="feature-header">
                   {tool.icon}
                   <h3>{tool.title}</h3>
-                  <p>{tool.description}</p>
                 </div>
                 <div className="feature-meta">
                   {tool.tools.map((item) => (
