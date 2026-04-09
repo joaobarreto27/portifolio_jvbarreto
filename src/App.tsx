@@ -156,7 +156,7 @@ function App() {
 
       <section id="education" className="section section-dark">
         <div className="section-inner">
-          <h2>Formação acadêmica</h2>
+          <h2>Formação Acadêmica</h2>
           <p className="section-copy">
             Minha formação educacional em engenharia de dados.
           </p>
@@ -177,7 +177,7 @@ function App() {
 
       <section id="projects" className="section section-dark">
         <div className="section-inner">
-          <h2>Projetos em destaque</h2>
+          <h2>Projetos em Destaque</h2>
           <p className="section-copy">
             Projetos que demonstram minha expertise em engenharia de dados, cloud e automação.
           </p>
@@ -228,7 +228,7 @@ function App() {
         <div className="section-inner contact-column">
           <div className="contact-copy">
             <p className="eyebrow">Contato</p>
-            <h2>Vamos conversar</h2>
+            <h2>Vamos Conversar</h2>
             <p>
               Se você busca um profissional que entrega arquiteturas de dados robustas
               com AWS, automação e governança, vamos conversar.
