@@ -1,4 +1,4 @@
-import { Send, Cloud, Database, Settings, Sparkles, ArrowRight, Github, Linkedin, MapPin } from 'lucide-react';
+import { Send, Cloud, Database, Settings, Sparkles, ArrowRight, Github, Linkedin, MapPin, User } from 'lucide-react';
 import { CheckCircle } from 'lucide-react';
 
 const linkedInUrl = 'https://www.linkedin.com/in/jo%C3%A3o-vitor-barreto-495a6a222/';
@@ -78,7 +78,7 @@ function App() {
               Ver projetos <ArrowRight size={18} />
             </a>
             <a className="button button-secondary" href="#about">
-              Sobre 📋
+              Sobre Mim <User size={18} />
             </a>
             <a className="button button-secondary" href={linkedInUrl} target="_blank" rel="noreferrer">
               Linkedin <Linkedin size={18} />
@@ -105,7 +105,7 @@ function App() {
         <div className="section-inner">
           <div className="about-grid">
             <div className="about-content">
-              <h2>Sobre</h2>
+              <h2>Sobre Mim</h2>
               <p>
                 Engenheiro de Dados com sólida trajetória na condução de projetos
                 end-to-end, desde o levantamento de requisitos até a entrega final de
