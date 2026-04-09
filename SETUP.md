@@ -154,3 +154,4 @@ O workflow faz:
 - build do site
 - sincronização de `dist/` para o bucket S3
 - invalidação de cache no CloudFront quando configurado
+
