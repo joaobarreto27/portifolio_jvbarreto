@@ -1,5 +1,4 @@
 import { Send, Cloud, Database, Settings, Sparkles, ArrowRight, Github, Linkedin, MapPin, User } from 'lucide-react';
-import { CheckCircle } from 'lucide-react';
 import { useState } from 'react';
 
 const linkedInUrl = 'https://www.linkedin.com/in/jo%C3%A3o-vitor-barreto-495a6a222/';
