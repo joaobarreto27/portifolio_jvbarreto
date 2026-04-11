@@ -75,7 +75,6 @@ a {
   flex-wrap: nowrap;
   gap: 0.5rem;
   margin-top: 2rem;
-  overflow-x: auto;
 }
 
 .button {
