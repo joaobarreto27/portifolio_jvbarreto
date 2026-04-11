@@ -49,13 +49,13 @@ const projects = [
     title: 'Lakehouse Orquestrado com PySpark, Apache Airflow e AWS',
     description: 'Arquitetura de dados moderna com Delta Lake, PySpark e observabilidade completa para analytics.',
     highlights: ['PySpark', 'Apache Airflow', 'Data Lake', 'AWS'],
-    repoUrl: 'https://github.com/joaobarreto27/market-data-lakehouse-orchestrator'
+    repoUrl: 'https://github.com/joaobarreto27/market_data_lakehouse_orchestrator'
   },
   {
     title: 'ETL com Pandas e Apache Airflow para Dados de Criptomoedas',
     description: 'Pipeline de dados automatizado para coleta e processamento de dados de criptomoedas usando Apache Airflow, Docker e AWS.',
     highlights: ['Apache Airflow', 'Docker', 'Pandas', 'ETL'],
-    repoUrl: 'https://github.com/joaobarreto27/etl-bitcoin-jd'
+    repoUrl: 'https://github.com/joaobarreto27/etl_bitcoin_jd'
   }
 ];
 
