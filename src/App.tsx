@@ -1,4 +1,4 @@
-import { Send, Cloud, Database, Settings, Sparkles, ArrowRight, Github, Linkedin, MapPin, User } from 'lucide-react';
+import { Send, Cloud, Database, Settings, Sparkles, ArrowRight, Github, Linkedin, MapPin, User, FileText } from 'lucide-react';
 import { useState } from 'react';
 
 const linkedInUrl = 'https://www.linkedin.com/in/jo%C3%A3o-vitor-barreto-495a6a222/';
@@ -90,11 +90,17 @@ const handleCopyEmail = () => {
             <a className="button button-secondary card-hover" href="#about">
               Sobre Mim <User size={15} />
             </a>
+            <a className="button button-secondary card-hover" href="#contact">
+              Fale comigo <Send size={15} />
+            </a>
             <a className="button button-secondary card-hover" href={linkedInUrl} target="_blank" rel="noreferrer">
               Linkedin <Linkedin size={15} />
             </a>
-            <a className="button button-secondary card-hover" href="#contact">
-              Fale comigo <Send size={15} />
+            <a className="button button-secondary card-hover" 
+              href="/curriculo_joao_vitor_barreto.pdf" 
+              target="_blank" 
+              rel="noreferrer">
+              Ver Currículo <FileText size={15} />
             </a>
           </div>
         </div>
@@ -185,7 +191,7 @@ const handleCopyEmail = () => {
         </div>
       </section>
 
-      <section id="projects" className="section section-dark">
+        <section id="projects" className="section section-dark">
   <div className="section-inner">
     <h2>Projetos em Destaque</h2>
     <p className="section-copy">
@@ -239,73 +245,90 @@ const handleCopyEmail = () => {
   </div>
 </section>
 
-      <section id="contact" className="section section-dark contact-section">
-        <div className="section-inner contact-column">
-          <div className="contact-copy">
-            <p className="eyebrow">Contato</p>
-            <h2>Vamos Conversar</h2>
-            <p>
-              Se você busca um profissional que entrega arquiteturas de dados robustas
-              com AWS, automação e governança, vamos conversar.
-            </p>
-            <p>
-              Estou aberto para trabalho remoto, híbrido ou presencial e pronto para colaborar em projetos de
-              dados, analytics e soluções em nuvem.
-            </p>
-          </div>
-          <div className="contact-grid">
-            <a className="contact-card card-hover" href={linkedInUrl} target="_blank" rel="noreferrer">
-              <div className="contact-icon">
-                <Linkedin size={20} />
-              </div>
-              <div>
-                <p className="contact-card-label">LinkedIn</p>
-                <strong>João Barreto</strong>
-              </div>
-            </a>
-            <div 
-              className="contact-card card-hover" 
-              onClick={handleCopyEmail}
-              title="Clique para copiar o e-mail"
-              role="button"
-            >
-              <div className="contact-icon">
-                <Send size={20} />
-              </div>
-              <div>
-                <p 
-                  className="contact-card-label"
-                  style={{ color: emailCopied ? '#4ade80' : '' }}
-                >
-                  {emailCopied ? 'E-mail copiado!' : 'E-mail (Copiar)'}
-                </p>
-                <strong>{contactEmail}</strong>
-              </div>
-            </div>
-            <div className="contact-card card-hover contact-info-card">
-              <div className="contact-icon">
-                <MapPin size={20} />
-              </div>
-              <div>
-                <p className="contact-card-label">Localização</p>
-                <strong>{locationLabel}</strong>
-                <p className="text-gray-400 text-sm mt-1">
-                  Aberto a trabalho remoto
-                </p>
-              </div>
-            </div>
-            <a className="contact-card card-hover" href={githubUrl} target="_blank" rel="noreferrer">
-              <div className="contact-icon">
-                <Github size={20} />
-              </div>
-              <div>
-                <p className="contact-card-label">GitHub</p>
-                <strong>github.com/joaobarreto27</strong>
-              </div>
-            </a>
-          </div>
+<section id="contact" className="section section-dark">
+  <div className="section-inner">
+    <h2>Vamos Conversar</h2>
+    
+    <div className="section-copy" style={{ marginBottom: '1.5rem' }}>
+      <p style={{ marginBottom: '0.5rem' }}>
+        Se você busca um profissional que entrega arquiteturas de dados robustas
+        com AWS, automação e governança, vamos conversar.
+      </p> 
+      <p style={{ marginBottom: '1rem' }}>
+        Estou aberto para trabalho remoto, híbrido ou presencial e pronto para colaborar em projetos de
+        dados, analytics e soluções em nuvem.
+      </p>
+      
+      <a 
+        className="button button-secondary card-hover" 
+        href="/curriculo_joao_vitor_barreto.pdf" 
+        target="_blank" 
+        rel="noreferrer"
+        style={{ width: 'fit-content' }}
+      > 
+        Ver Currículo <FileText size={20} />
+      </a>
+    </div>
+
+    <div className="contact-grid">
+      <a className="contact-card card-hover" href={linkedInUrl} target="_blank" rel="noreferrer">
+        <div className="contact-icon">
+          <Linkedin size={20} />
         </div>
-      </section>
+        <div>
+          <p className="contact-card-label">LinkedIn</p>
+          <strong>João Barreto</strong>
+        </div>
+      </a>
+
+      <div 
+        className="contact-card card-hover" 
+        onClick={handleCopyEmail}
+        title="Clique para copiar o e-mail"
+        role="button"
+        tabIndex={0}
+        onKeyPress={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            handleCopyEmail();
+          }
+        }}
+      >
+        <div className="contact-icon">
+          <Send size={20} />
+        </div>
+        <div>
+          <p 
+            className="contact-card-label"
+            style={{ color: emailCopied ? '#4ade80' : '' }}>
+            {emailCopied ? 'E-mail copiado!' : 'E-mail (Copiar)'}
+          </p>
+          <strong>{contactEmail}</strong>
+        </div>
+      </div>
+
+      <a className="contact-card card-hover" href={githubUrl} target="_blank" rel="noreferrer">
+        <div className="contact-icon">
+          <Github size={20} />
+        </div>
+        <div>
+          <p className="contact-card-label">GitHub</p>
+          <strong>github.com/joaobarreto27</strong>
+        </div>
+      </a>
+
+      <div className="contact-card card-hover contact-info-card">
+        <div className="contact-icon">
+          <MapPin size={20} />
+        </div>
+        <div>
+          <p className="contact-card-label">Localização</p>
+          <strong>{locationLabel}</strong>
+          <p className="text-gray-400 text-sm mt-1">Aberto a trabalho remoto</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <footer className="footer">
         <p>© 2026 João Barreto — Engenharia de Dados & Cloud na AWS.</p>
