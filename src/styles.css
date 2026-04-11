@@ -303,7 +303,7 @@ a {
 .feature-card h3,
 .skill-card h3,
 .project-card h3 {
-  margin: 0;
+  margin: 0.75rem 0 0.75rem;
 }
 
 .feature-card p,

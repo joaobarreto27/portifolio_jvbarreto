@@ -1,5 +1,6 @@
 import { Send, Cloud, Database, Settings, Sparkles, ArrowRight, Github, Linkedin, MapPin, User } from 'lucide-react';
 import { CheckCircle } from 'lucide-react';
+import { useState } from 'react';
 
 const linkedInUrl = 'https://www.linkedin.com/in/jo%C3%A3o-vitor-barreto-495a6a222/';
 const githubUrl = 'https://github.com/joaobarreto27';
@@ -61,6 +62,16 @@ const projects = [
 
 
 function App() {
+  const [emailCopied, setEmailCopied] = useState(false);
+
+const handleCopyEmail = () => {
+  navigator.clipboard.writeText(contactEmail);
+  setEmailCopied(true);
+  
+  setTimeout(() => {
+    setEmailCopied(false);
+  }, 2000);
+  };
   return (
     <div className="page-shell">
       <header className="hero-section">
@@ -74,22 +85,22 @@ function App() {
             entregando arquiteturas escaláveis, eficientes e prontas para produção.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#projects">
+            <a className="button button-primary card-hover" href="#projects">
               Ver Projetos <ArrowRight size={15} />
             </a>
-            <a className="button button-secondary" href="#about">
+            <a className="button button-secondary card-hover" href="#about">
               Sobre Mim <User size={15} />
             </a>
-            <a className="button button-secondary" href={linkedInUrl} target="_blank" rel="noreferrer">
+            <a className="button button-secondary card-hover" href={linkedInUrl} target="_blank" rel="noreferrer">
               Linkedin <Linkedin size={15} />
             </a>
-            <a className="button button-secondary" href="#contact">
+            <a className="button button-secondary card-hover" href="#contact">
               Fale comigo <Send size={15} />
             </a>
           </div>
         </div>
         <div className="hero-aside">
-          <div className="hero-card">
+          <div className="hero-card card-hover">
             <h2>Impactos e resultados</h2>
             <ul>
               <li>📉 Economia de custos superior a 80% em cloud.</li>
@@ -162,7 +173,7 @@ function App() {
           </p>
           <div className="education-list">
             {education.map((edu, index) => (
-              <article key={index} className="education-card">
+              <article key={index} className="education-card card-hover">
                 <h3>{edu.degree}</h3>
                 <p className="education-field">{edu.field}</p>
                 <div className="education-meta">
@@ -176,53 +187,58 @@ function App() {
       </section>
 
       <section id="projects" className="section section-dark">
-        <div className="section-inner">
-          <h2>Projetos em Destaque</h2>
-          <p className="section-copy">
-            Projetos que demonstram minha expertise em engenharia de dados, cloud e automação.
-          </p>
-          <div className="projects-grid">
-            {projects.map((project) => (
-              <article key={project.title} className="project-card card-hover">
-                <div>
-                  <span className="project-label">Projeto</span>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                </div>
-                <div className="project-meta">
-                  {project.highlights.map((highlight) => (
-                    <span key={highlight} className="tag">
-                      {highlight}
-                    </span>
-                  ))}
-                </div>
-                {project.repoUrl && (
-                  <a
-                    className="button button-secondary project-link"
-                    href={project.repoUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Ver no GitHub <Github size={16} />
-                  </a>
-                )}
-              </article>
-            ))}
-            <article className="project-card project-placeholder card-hover">
-              <div>
-                <span className="project-label">Em breve</span>
-                <h3>Novo projeto</h3>
-                <p>Pronto para novos desafios de dados, nuvem e automação.</p>
-              </div>
-              <div className="project-meta">
-                <span className="tag">DataOps</span>
-                <span className="tag">Streaming</span>
-                <span className="tag">Observability</span>
-              </div>
-            </article>
+  <div className="section-inner">
+    <h2>Projetos em Destaque</h2>
+    <p className="section-copy">
+      Projetos que demonstram minha expertise em engenharia de dados, cloud e automação.
+    </p>
+    <div className="projects-grid">
+      {projects.map((project) => (
+        <article key={project.title} className="project-card card-hover">
+          <div>
+            <span className="project-label">Projeto</span>
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+            
+            <div className="project-meta">
+              {project.highlights.map((highlight) => (
+                <span key={highlight} className="tag">
+                  {highlight}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {project.repoUrl && (
+            <a
+              className="button button-secondary project-link card-hover"
+              href={project.repoUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Ver no GitHub <Github size={16} />
+            </a>
+          )}
+        </article>
+      ))}
+
+      <article className="project-card project-placeholder card-hover">
+        <div>
+          <span className="project-label">Em breve</span>
+          <h3>Novo projeto</h3>
+          <p>Pronto para novos desafios de dados, nuvem e automação.</p>
+          
+          <div className="project-meta">
+            <span className="tag">DataOps</span>
+            <span className="tag">Streaming</span>
+            <span className="tag">Observability</span>
           </div>
         </div>
-      </section>
+      </article>
+
+    </div>
+  </div>
+</section>
 
       <section id="contact" className="section section-dark contact-section">
         <div className="section-inner contact-column">
@@ -248,15 +264,25 @@ function App() {
                 <strong>João Barreto</strong>
               </div>
             </a>
-            <a className="contact-card card-hover" href={`mailto:${contactEmail}`}>
+            <div 
+              className="contact-card card-hover" 
+              onClick={handleCopyEmail}
+              title="Clique para copiar o e-mail"
+              role="button"
+            >
               <div className="contact-icon">
                 <Send size={20} />
               </div>
               <div>
-                <p className="contact-card-label">E-mail</p>
+                <p 
+                  className="contact-card-label"
+                  style={{ color: emailCopied ? '#4ade80' : '' }}
+                >
+                  {emailCopied ? 'E-mail copiado!' : 'E-mail (Copiar)'}
+                </p>
                 <strong>{contactEmail}</strong>
               </div>
-            </a>
+            </div>
             <div className="contact-card card-hover contact-info-card">
               <div className="contact-icon">
                 <MapPin size={20} />
