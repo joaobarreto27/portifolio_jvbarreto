@@ -545,12 +545,17 @@ a {
   font-weight: 600;
 }
 
+.institution {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
 .education-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #94a3b8;
   font-size: 0.9rem;
+  margin-top: 0.5rem;
 }
 
 .certifications-grid {
