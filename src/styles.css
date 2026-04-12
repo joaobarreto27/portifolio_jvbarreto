@@ -72,9 +72,25 @@ a {
 
 .hero-actions {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 2rem;
+}
+
+@media (max-width: 480px) {
+  .hero-copy p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .hero-actions {
+    flex-direction: column; 
+  }
+
+  .button {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .button {
