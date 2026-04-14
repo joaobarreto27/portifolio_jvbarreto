@@ -1,4 +1,4 @@
-import { Send, Cloud, Database, Settings, Sparkles, ArrowRight, Github, Linkedin, MapPin, User, FileText } from 'lucide-react';
+import { Send, Cloud, Database, Settings, Sparkles, ArrowRight, Github, Linkedin, MapPin, User, FileText, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
 const linkedInUrl = 'https://www.linkedin.com/in/jo%C3%A3o-vitor-barreto-495a6a222/';
@@ -62,6 +62,7 @@ const projects = [
 
 function App() {
   const [emailCopied, setEmailCopied] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
 const handleCopyEmail = () => {
   navigator.clipboard.writeText(contactEmail);
@@ -72,7 +73,37 @@ const handleCopyEmail = () => {
   }, 2000);
   };
   return (
-    <div className="page-shell">
+    <div id="top" className="page-shell">
+      <header className="site-header">
+        <div className="header-inner">
+          <a href="#top" className="logo-link" aria-label="Voltar para o topo">JV</a>
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((current) => !current)}
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+          <nav className="main-nav" aria-label="Navegação principal">
+            <a href="#top">Home</a>
+            <a href="#about">Sobre</a>
+            <a href="#skills">Habilidades</a>
+            <a href="#projects">Projetos</a>
+            <a href="#contact">Contato</a>
+          </nav>
+        </div>
+        {menuOpen && (
+          <div className="mobile-nav-panel card-hover" role="dialog" aria-modal="true">
+            <a href="#top" onClick={() => setMenuOpen(false)}>Home</a>
+            <a href="#about" onClick={() => setMenuOpen(false)}>Sobre</a>
+            <a href="#skills" onClick={() => setMenuOpen(false)}>Habilidades</a>
+            <a href="#projects" onClick={() => setMenuOpen(false)}>Projetos</a>
+            <a href="#contact" onClick={() => setMenuOpen(false)}>Contato</a>
+          </div>
+        )}
+      </header>
       <header className="hero-section">
         <div className="hero-copy">
           <p className="eyebrow">Engenheiro de Dados & Arquitetura AWS</p>
@@ -278,6 +309,7 @@ const handleCopyEmail = () => {
         <div>
           <p className="contact-card-label">LinkedIn</p>
           <strong>João Barreto</strong>
+          <p className="text-gray-400 text-sm mt-1">Vamos nos conectar</p>
         </div>
       </a>
 
@@ -303,6 +335,7 @@ const handleCopyEmail = () => {
             {emailCopied ? 'E-mail copiado!' : 'E-mail (Copiar)'}
           </p>
           <strong>{contactEmail}</strong>
+          < p className="text-gray-400 text-sm mt-1">Respondo em até 24 horas</p>
         </div>
       </div>
 
@@ -313,6 +346,7 @@ const handleCopyEmail = () => {
         <div>
           <p className="contact-card-label">GitHub</p>
           <strong>github.com/joaobarreto27</strong>
+          < p className="text-gray-400 text-sm mt-1">Venha ver meu projetos</p>
         </div>
       </a>
 
