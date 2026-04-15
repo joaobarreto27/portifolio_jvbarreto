@@ -126,10 +126,11 @@ function App() {
   };
 
   const getThemeIcon = () => {
-    if (theme === 'auto') {
-      return getSystemTheme() === 'dark' ? <Moon size={20} /> : <Sun size={20} />;
-    }
-    return theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />;
+    const currentTheme = theme === 'auto' ? getSystemTheme() : theme;
+
+    return currentTheme === 'dark'
+      ? <Sun size={20} />
+      : <Moon size={20} />;
   };
 
 const handleCopyEmail = () => {

@@ -20,6 +20,7 @@
   --bg-hero: #0f172ad6;
   --bg-project-label: #38bdf81f;
   --bg-tag: rgba(148, 163, 184, 0.1);
+  --bg-button-secondary:#0f172ad6;
 
   --text-primary: #ebedf0;
   --text-secondary: #cbd5e1;
@@ -54,6 +55,7 @@
   --bg-hero: #e0f2fe;
   --bg-project-label: #38bdf81f;
   --bg-tag: #38bdf81f;
+  --bg-button-secondary: #38bdf81f;
 
   --text-primary: #0f172a;
   --text-secondary: #334155;
@@ -183,7 +185,7 @@ a {
 }
 
 .button-secondary {
-  background: var(--bg-hero);
+  background: var(--bg-button-secondary);
   color: var(--text-primary);
   border-color: var(--border-color);
 }
