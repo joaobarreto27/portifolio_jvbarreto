@@ -82,6 +82,14 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [menuOpen]);
+
+  useEffect(() => {
     const root = document.documentElement;
     const currentTheme = theme === 'auto' ? getSystemTheme() : theme;
 
@@ -171,6 +179,15 @@ const handleCopyEmail = () => {
             <a href="#contact">Contato</a>
           </nav>
         </div>
+      </header>
+      <header className="hero-section">
+              {menuOpen && (
+          <div className="menu-overlay" 
+              onClick={() => setMenuOpen(false)} 
+              aria-hidden="true"
+              />
+              
+            )}
         {menuOpen && (
           <div className="mobile-nav-panel card-hover" role="dialog" aria-modal="true">
             <a href="#top" onClick={() => setMenuOpen(false)}>Home</a>
@@ -180,8 +197,6 @@ const handleCopyEmail = () => {
             <a href="#contact" onClick={() => setMenuOpen(false)}>Contato</a>
           </div>
         )}
-      </header>
-      <header className="hero-section">
         <div className="hero-copy">
           <p className="eyebrow">Engenheiro de Dados & Arquitetura AWS</p>
           <h1>
