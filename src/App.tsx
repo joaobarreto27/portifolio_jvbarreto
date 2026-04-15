@@ -1,5 +1,5 @@
-import { Send, Cloud, Database, Settings, Sparkles, ArrowRight, Github, Linkedin, MapPin, User, FileText, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { Send, Cloud, Database, Settings, Sparkles, ArrowRight, Github, Linkedin, MapPin, User, FileText, Menu, X, Sun, Moon } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const linkedInUrl = 'https://www.linkedin.com/in/jo%C3%A3o-vitor-barreto-495a6a222/';
 const githubUrl = 'https://github.com/joaobarreto27';
@@ -63,6 +63,74 @@ const projects = [
 function App() {
   const [emailCopied, setEmailCopied] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark' | 'auto'>('auto');
+
+  const getSystemTheme = () => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return 'dark';
+  };
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | 'auto' | null;
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      setTheme('auto');
+    }
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const currentTheme = theme === 'auto' ? getSystemTheme() : theme;
+
+    if (currentTheme === 'dark') {
+      root.classList.remove('light-theme');
+      root.classList.add('dark-theme');
+    } else {
+      root.classList.remove('dark-theme');
+      root.classList.add('light-theme');
+    }
+
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  useEffect(() => {
+    if (theme === 'auto') {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const handleChange = () => {
+        const root = document.documentElement;
+        const systemTheme = getSystemTheme();
+
+        if (systemTheme === 'dark') {
+          root.classList.remove('light-theme');
+          root.classList.add('dark-theme');
+        } else {
+          root.classList.remove('dark-theme');
+          root.classList.add('light-theme');
+        }
+      };
+
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    if (theme === 'auto') {
+      setTheme(getSystemTheme() === 'dark' ? 'light' : 'dark');
+    } else {
+      setTheme(theme === 'dark' ? 'light' : 'dark');
+    }
+  };
+
+  const getThemeIcon = () => {
+    if (theme === 'auto') {
+      return getSystemTheme() === 'dark' ? <Moon size={20} /> : <Sun size={20} />;
+    }
+    return theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />;
+  };
 
 const handleCopyEmail = () => {
   navigator.clipboard.writeText(contactEmail);
@@ -85,6 +153,14 @@ const handleCopyEmail = () => {
             onClick={() => setMenuOpen((current) => !current)}
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+          <button
+            type="button"
+            className="theme-toggle"
+            aria-label={`Alternar tema (${theme === 'auto' ? 'automático' : theme === 'dark' ? 'escuro' : 'claro'})`}
+            onClick={toggleTheme}
+          >
+            {getThemeIcon()}
           </button>
           <nav className="main-nav" aria-label="Navegação principal">
             <a href="#top">Home</a>
