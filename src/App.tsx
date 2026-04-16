@@ -149,6 +149,11 @@ const handleCopyEmail = () => {
     setEmailCopied(false);
   }, 2000);
   };
+  const handleOpenMenu = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setMenuOpen(true);
+  };
+
   return (
     <div id="top" className="page-shell">
       <header className="site-header">
@@ -159,7 +164,7 @@ const handleCopyEmail = () => {
             className="menu-toggle"
             aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((current) => !current)}
+            onClick={() => menuOpen ? setMenuOpen(false) : handleOpenMenu()}
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
